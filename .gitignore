@@ -46,9 +46,16 @@ next-env.d.ts
 
 # Agent/Claude configuration (private)
 .agents/
+CLAUDE.md
 CLAUDE.local.md
 .mcp.json
 .gitmodules
+
+# IDE
+.vscode/
+
+# Project notes
+PROYECTO.md
 
 # Backup files
 *.back
