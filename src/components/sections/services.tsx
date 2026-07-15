@@ -135,7 +135,7 @@ export function ServicesSection() {
               return (
                 <button
                   key={service.id}
-                  onPointerDown={() => setSelectedService(service.id)}
+                  onClick={() => setSelectedService(service.id)}
                   className="service-card group relative w-full overflow-hidden rounded-2xl border border-border/50 bg-background/30 p-6 backdrop-blur-xl text-left transition-all duration-500 hover:border-violet-500/30 hover:bg-background/50 hover:shadow-2xl hover:-translate-y-1 cursor-pointer"
                   style={{ WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}
                 >

@@ -121,11 +121,22 @@ export function VideoBackground() {
       if (v) v.currentTime = initTime
     })
 
+    let lastProgress = -1
+    const SEEK_THRESHOLD = 0.08
+    const SMOOTH = 0.12
+
     const smoothSeekLoop = () => {
       const diff = targetProgress.current - smoothProgress.current
-      smoothProgress.current += diff * 0.1
+      smoothProgress.current += diff * SMOOTH
 
       const p = smoothProgress.current
+
+      if (Math.abs(p - lastProgress) < 0.003) {
+        animationFrameId.current = requestAnimationFrame(smoothSeekLoop)
+        return
+      }
+      lastProgress = p
+
       VIDEOS.forEach((cfg, i) => {
         const video = videos[i]
         if (!video || !video.duration || Number.isNaN(video.duration)) return
@@ -140,7 +151,7 @@ export function VideoBackground() {
             const localP = Math.max(0, Math.min(1, (p - rStart) / (rEnd - rStart)))
             const dur = video.duration - startOffset
             const targetTime = startOffset + localP * Math.max(dur, 0)
-            if (video.readyState >= 2 && Math.abs(video.currentTime - targetTime) > 0.04) {
+            if (video.readyState >= 2 && Math.abs(video.currentTime - targetTime) > SEEK_THRESHOLD) {
               video.currentTime = targetTime
             }
           } else if (i === VIDEOS.length - 1) {
