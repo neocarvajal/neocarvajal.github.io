@@ -6,15 +6,6 @@ import { X, Send, Sparkles, AlertTriangle, User, Bot, Loader2, ArrowUpRight } fr
 import { getSupabase } from "@/lib/supabase"
 import { useLang } from "@/lib/i18n"
 
-function sanitizeContent(text: string): string {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#x27;")
-}
-
 interface ServiceData {
   id: string
   title: string
@@ -175,7 +166,7 @@ export function ChatModal({ service, onClose }: ChatModalProps) {
                       : "bg-muted/30 text-foreground border border-border/20"
                   }`}
                 >
-                  <p className="whitespace-pre-wrap">{sanitizeContent(msg.content)}</p>
+                  <p className="whitespace-pre-wrap">{msg.content}</p>
                 </div>
                 {msg.role === "user" && (
                   <div className="mt-1 flex size-8 shrink-0 items-center justify-center rounded-lg bg-foreground/10 shadow-sm">
