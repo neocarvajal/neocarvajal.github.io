@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { LangProvider } from "@/lib/i18n";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -14,21 +15,21 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Erick Carvajal | Blockchain Developer & Web3 Builder",
   description:
-    "Web3 Builder de LATAM. Solana, Rust, Anchor, Smart Contracts y tecnologías descentralizadas.",
+    "Web3 Builder from LATAM. Solana, Rust, Anchor, Smart Contracts and decentralized technologies.",
   openGraph: {
     title: "Erick Carvajal | Blockchain Developer",
     description:
-      "Web3 Builder de LATAM construyendo el futuro descentralizado.",
+      "Web3 Builder from LATAM building the decentralized future.",
     url: "https://neocarvajal.dev",
     siteName: "Erick Carvajal",
-    locale: "es_ES",
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Erick Carvajal | Blockchain Developer",
     description:
-      "Web3 Builder de LATAM construyendo el futuro descentralizado.",
+      "Web3 Builder from LATAM building the decentralized future.",
   },
 };
 
@@ -39,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="es"
+      lang="en"
       className={`${spaceGrotesk.variable} h-full antialiased`}
       suppressHydrationWarning
     >
@@ -51,8 +52,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider delay={0}>
-            <ThemeToggle />
-            <main className="flex-1">{children}</main>
+            <LangProvider>
+              {/* <ThemeToggle /> */}
+              <main className="flex-1">{children}</main>
+            </LangProvider>
           </TooltipProvider>
         </ThemeProvider>
       </body>

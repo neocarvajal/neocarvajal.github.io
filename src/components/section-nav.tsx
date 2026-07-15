@@ -1,22 +1,16 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useLang } from "@/lib/i18n"
 
-const sections = [
-  { id: "cover", label: "Inicio" },
-  { id: "about", label: "Sobre mí" },
-  { id: "experience", label: "Experiencia" },
-  { id: "certifications", label: "Certificaciones" },
-  { id: "projects", label: "Proyectos" },
-  { id: "blog", label: "Blog" },
-  { id: "interests", label: "Intereses" },
-  { id: "nft", label: "NFTs" },
-  { id: "social", label: "Redes" },
-]
+const sectionIds = ["cover", "about", "experience", "certifications", "projects", "blog", "interests", "services", "social"] as const
 
 export function SectionNav() {
   const [active, setActive] = useState("cover")
   const [hovered, setHovered] = useState<string | null>(null)
+  const { lang, tx } = useLang()
+
+  const sections = sectionIds.map((id) => ({ id, label: tx.nav[id][lang] }))
 
   useEffect(() => {
     const observers: IntersectionObserver[] = []
@@ -35,7 +29,7 @@ export function SectionNav() {
     })
 
     return () => observers.forEach((o) => o.disconnect())
-  }, [])
+  }, [lang])
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })

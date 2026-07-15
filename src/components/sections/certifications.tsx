@@ -3,9 +3,22 @@
 import { useRef, useEffect } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Award, Calendar, ShieldCheck, ExternalLink } from "lucide-react"
+import { Award, Calendar, ShieldCheck, ExternalLink, Sparkles } from "lucide-react"
+import { useLang } from "@/lib/i18n"
 
 gsap.registerPlugin(ScrollTrigger)
+
+const issuerGradients: Record<string, string> = {
+  "WayLearn & Solana Foundation": "from-amber-500 to-orange-600",
+  "Cyfrin Updraft": "from-blue-500 to-indigo-600",
+  "Heavy Duty Builders": "from-emerald-500 to-teal-600",
+  "Chainlink": "from-blue-600 to-cyan-600",
+  "Push Protocol": "from-red-500 to-rose-600",
+}
+
+function getIssuerGradient(issuer: string): string {
+  return issuerGradients[issuer] ?? "from-violet-500 to-purple-600"
+}
 
 const certifications = [
   {
@@ -63,6 +76,7 @@ const certifications = [
 
 export function CertificationsSection() {
   const sectionRef = useRef<HTMLElement>(null)
+  const { lang, tx } = useLang()
 
   useEffect(() => {
     const el = sectionRef.current
@@ -87,82 +101,88 @@ export function CertificationsSection() {
   }, [])
 
   return (
-    <section id="certifications" ref={sectionRef} className="relative z-10 px-4 py-32" style={{ perspective: 1200 }}>
+    <section id="certifications" ref={sectionRef} className="relative z-10 px-3 sm:px-4 py-32" style={{ perspective: 1200 }}>
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/20 to-background/60 pointer-events-none" />
       <div className="mx-auto max-w-6xl">
         <div className="section-title-anim mb-16 text-center">
           <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-1.5 text-xs text-violet-300 backdrop-blur-sm">
             <Award className="size-3" />
-            Educación y validación
+            {tx.certifications.badge[lang]}
           </span>
           <h2 className="bg-gradient-to-r from-violet-200 via-fuchsia-200 to-cyan-200 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl">
-            Certificaciones
+            {tx.certifications.title[lang]}
           </h2>
           <p className="mx-auto mt-4 max-w-md text-muted-foreground">
-            Acreditaciones clave en desarrollo Blockchain, Rust y Web3
+            {tx.certifications.desc[lang]}
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" style={{ transformStyle: "preserve-3d" }}>
-          {certifications.map((c) => (
-            <div
-              key={c.title}
-              className="cert-card group relative flex flex-col justify-between rounded-2xl border border-border/50 bg-background/30 p-6 backdrop-blur-xl transition-all duration-500 hover:border-violet-500/30 hover:bg-background/50 hover:shadow-2xl hover:shadow-violet-500/10"
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              <div className="relative">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="inline-flex items-center gap-1 rounded bg-violet-500/10 px-2 py-1 text-[10px] font-medium text-violet-300">
-                    <ShieldCheck className="size-3" />
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" style={{ transformStyle: "preserve-3d" }}>
+          {certifications.map((c) => {
+            const grad = getIssuerGradient(c.issuer)
+            return (
+              <div
+                key={c.title}
+                className="cert-card group relative flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-background/30 p-4 sm:p-5 backdrop-blur-xl transition-all duration-500 hover:border-violet-500/30 hover:bg-background/50 hover:shadow-2xl hover:shadow-violet-500/10"
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${grad} opacity-0 transition-opacity duration-500 group-hover:opacity-[0.04]`} />
+                <div className="relative flex flex-col gap-3 min-w-0 break-words">
+                  <div className="flex items-center justify-between">
+                    <div className={`flex size-10 items-center justify-center rounded-lg bg-gradient-to-br ${grad}`}>
+                      <ShieldCheck className="size-5 text-white" />
+                    </div>
+                    <span className="flex items-center gap-1 text-[11px] text-muted-foreground/60">
+                      <Calendar className="size-3" />
+                      {c.date}
+                    </span>
+                  </div>
+
+                  <span className="inline-flex self-start items-center gap-1 rounded bg-violet-500/10 px-2 py-0.5 text-[10px] font-medium text-violet-300">
+                    <Sparkles className="size-2.5" />
                     {c.issuer}
                   </span>
-                  <div className="flex items-center gap-1 text-[11px] text-muted-foreground/60">
-                    <Calendar className="size-3" />
-                    {c.date}
+
+                  <h3 className="font-semibold leading-snug text-foreground transition-colors group-hover:text-violet-200">
+                    {c.title}
+                  </h3>
+
+                  {c.desc && (
+                    <p className="text-xs text-muted-foreground/80 leading-relaxed">
+                      {c.desc}
+                    </p>
+                  )}
+
+                  {c.credentialId && (
+                    <div className="font-mono text-[9px] text-muted-foreground/40 truncate">
+                      {tx.certifications.idLabel[lang]}{c.credentialId}
+                    </div>
+                  )}
+
+                  <div className="flex flex-wrap gap-1.5">
+                    {c.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-full bg-muted/40 px-2 py-0.5 text-[9px] text-muted-foreground"
+                      >
+                        {skill}
+                      </span>
+                    ))}
                   </div>
+
+                  <a
+                    href={c.credentialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-border bg-background/20 py-2 text-xs font-medium backdrop-blur-sm transition-all hover:border-violet-500/50 hover:bg-violet-500/10 hover:text-violet-300"
+                  >
+                    {tx.certifications.showCredential[lang]}
+                    <ExternalLink className="size-3" />
+                  </a>
                 </div>
-
-                <h3 className="mb-2 text-md font-semibold leading-tight text-foreground transition-colors group-hover:text-violet-200">
-                  {c.title}
-                </h3>
-
-                {c.desc && (
-                  <p className="mb-4 text-xs text-muted-foreground/80 leading-relaxed">
-                    {c.desc}
-                  </p>
-                )}
-
-                {c.credentialId && (
-                  <div className="mb-4 font-mono text-[9px] text-muted-foreground/40 truncate">
-                    ID: {c.credentialId}
-                  </div>
-                )}
               </div>
-
-              <div>
-                <div className="mb-4 flex flex-wrap gap-1.5">
-                  {c.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-full bg-muted/40 px-2 py-0.5 text-[9px] text-muted-foreground"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-
-                <a
-                  href={c.credentialUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-border bg-background/20 py-2 text-xs font-medium backdrop-blur-sm transition-all hover:border-violet-500/50 hover:bg-violet-500/10 hover:text-violet-300"
-                >
-                  Mostrar credencial
-                  <ExternalLink className="size-3" />
-                </a>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

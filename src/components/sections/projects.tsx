@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from "react"
 import gsap from "gsap"
+import { useLang } from "@/lib/i18n"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ExternalLink, Star, Code2, Sparkles } from "lucide-react"
 
@@ -10,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger)
 const projects = [
   {
     name: "solanatiers",
-    desc: "Sistema de tiers y membresías on-chain en Solana.",
+    desc: "Decentralized creator platform built on Solana that enables creators to monetize exclusive content, communities and digital experiences through NFT memberships, token-gated access and on-chain subscriptions.",
     stars: 0,
     lang: "TypeScript",
     url: "https://github.com/neocarvajal/solanatiers",
@@ -18,7 +19,7 @@ const projects = [
   },
   {
     name: "solana-workflow",
-    desc: "Herramientas y workflows de automatización para desarrollo y testing en Solana.",
+    desc: "Solana Workflow is a platform that allows users to create, manage, and execute automated workflows on Solana without writing code. Users describe what they want to automate in plain language, and the platform transforms those instructions into structured workflows that can be monitored and executed automatically.",
     stars: 0,
     lang: "Rust",
     url: "https://github.com/neocarvajal/solana-workflow",
@@ -26,11 +27,19 @@ const projects = [
   },
   {
     name: "dexscreener-spl-explorer",
-    desc: "Explorador de tokens SPL con integraciones de datos en tiempo real de Dexscreener.",
+    desc: "A fast and minimalist web application for searching and tracking any SPL token on the Solana network in real time. ⚡ Real-time data provided by the Dexscreener API.",
     stars: 0,
     lang: "TypeScript",
     url: "https://github.com/neocarvajal/dexscreener-spl-explorer",
     color: "from-fuchsia-500 to-pink-600",
+  },
+  {
+    name: "worldcup-predmarket",
+    desc: "Mercado de predicción descentralizado para el Mundial 2026 en Solana. Apuesta en resultados con USDT y liquidación automática vía TxLINE.",
+    stars: 0,
+    lang: "TypeScript",
+    url: "https://github.com/neocarvajal/worldcup-predmarket",
+    color: "from-emerald-500 to-teal-600",
   },
 ]
 
@@ -96,6 +105,7 @@ function ProjectCard({ p }: { p: (typeof projects)[0] }) {
 }
 
 export function ProjectsSection() {
+  const { lang, tx } = useLang()
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -119,19 +129,19 @@ export function ProjectsSection() {
         <div className="section-title-anim mb-16 text-center">
           <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-1.5 text-xs text-violet-300 backdrop-blur-sm">
             <Sparkles className="size-3" />
-            Código abierto
+            {tx.projects.badge[lang]}
           </span>
           <h2
             className="mb-4 bg-gradient-to-r from-violet-200 via-fuchsia-200 to-cyan-200 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl"
           >
-            Proyectos
+            {tx.projects.title[lang]}
           </h2>
           <p className="mx-auto max-w-md text-muted-foreground">
-            Repositorios y contribuciones destacadas de Solana
+            {tx.projects.desc[lang]}
           </p>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" style={{ transformStyle: "preserve-3d" }}>
+        <div className="grid gap-5 sm:grid-cols-2" style={{ transformStyle: "preserve-3d" }}>
           {projects.map((p) => (
             <ProjectCard key={p.name} p={p} />
           ))}
@@ -144,7 +154,7 @@ export function ProjectsSection() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-violet-300"
           >
-            Ver todos en GitHub
+            {tx.projects.cta[lang]}
             <ExternalLink className="size-3.5" />
           </a>
         </div>

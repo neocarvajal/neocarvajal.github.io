@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef, useEffect } from "react"
+import { useLang } from "@/lib/i18n"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { GitFork, MessageCircle, Link2, Camera, Globe, PenTool, Sparkles } from "lucide-react"
@@ -17,6 +18,7 @@ const socials = [
 ]
 
 export function SocialSection() {
+  const { lang, tx } = useLang()
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -48,15 +50,15 @@ export function SocialSection() {
         <div className="section-title-anim mb-16 text-center">
           <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-4 py-1.5 text-xs text-fuchsia-300 backdrop-blur-sm">
             <Sparkles className="size-3" />
-            Conecta conmigo
+            {tx.social.badge[lang]}
           </span>
           <h2
             className="mb-4 bg-gradient-to-r from-fuchsia-200 via-violet-200 to-cyan-200 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl"
           >
-            Redes
+            {tx.social.title[lang]}
           </h2>
           <p className="mx-auto max-w-md text-muted-foreground">
-            Sígueme y sigue mi trabajo en el ecosistema Web3
+            {tx.social.desc[lang]}
           </p>
         </div>
 
@@ -86,19 +88,6 @@ export function SocialSection() {
           ))}
         </div>
 
-        <div className="mt-20 text-center text-sm text-muted-foreground/50">
-          <p>
-            Construido con Next.js, GSAP + Motion y Solana por{' '}
-            <a
-              href="https://github.com/neocarvajal"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-violet-300 hover:text-violet-200 transition-colors"
-            >
-              @neocarvajal
-            </a>
-          </p>
-        </div>
       </div>
     </section>
   )

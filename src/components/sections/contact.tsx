@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef, useEffect } from "react"
+import { useLang } from "@/lib/i18n"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Mail, MessageCircle, Send, Code2, ExternalLink, Sparkles } from "lucide-react"
@@ -8,6 +9,7 @@ import { Mail, MessageCircle, Send, Code2, ExternalLink, Sparkles } from "lucide
 gsap.registerPlugin(ScrollTrigger)
 
 export function ContactSection() {
+  const { lang, tx } = useLang()
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -31,16 +33,15 @@ export function ContactSection() {
         <div className="contact-content text-center" style={{ transformStyle: "preserve-3d" }}>
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-1.5 text-xs text-violet-300 backdrop-blur-sm">
             <Sparkles className="size-3" />
-            Hablemos
+            {tx.contact.badge[lang]}
           </span>
           <h2
             className="mb-4 bg-gradient-to-r from-violet-200 via-fuchsia-200 to-cyan-200 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl"
           >
-            Contacto
+            {tx.contact.title[lang]}
           </h2>
           <p className="mx-auto mb-10 max-w-md text-muted-foreground">
-            ¿Tienes un proyecto, idea o colaboración en mente? Estoy abierto a
-            oportunidades en el ecosistema Web3 y blockchain.
+            {tx.contact.desc[lang]}
           </p>
 
           <div className="mx-auto max-w-sm space-y-4">
@@ -69,9 +70,6 @@ export function ContactSection() {
             ))}
           </div>
 
-          <div className="mt-16 text-xs text-muted-foreground/40">
-            <p>Construido con Next.js, GSAP + Motion y mucho ☕ por @neocarvajal</p>
-          </div>
         </div>
       </div>
     </section>

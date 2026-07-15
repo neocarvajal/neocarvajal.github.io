@@ -4,46 +4,32 @@ import { useRef, useEffect } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Briefcase, Calendar } from "lucide-react"
+import { useLang } from "@/lib/i18n"
 
 gsap.registerPlugin(ScrollTrigger)
 
-const experiences = [
-  {
-    role: "Founder & Blockchain Developer",
-    company: "AVUM",
-    period: "Actualmente · 2024",
-    desc: "Desarrollo de protocolos DeFi y herramientas Web3 en Solana. Smart contracts con Anchor y Pinocchio.",
-    tags: ["Rust", "Anchor", "Solana", "TypeScript"],
-    gradient: "from-violet-500 to-purple-600",
-  },
-  {
-    role: "Talent Acquisition Specialist",
-    company: "AI Alvar Company",
-    period: "2023 - 2024",
-    desc: "Reclutamiento internacional de talento tech para LATAM y US. Estrategias de hiring y employer branding.",
-    tags: ["Reclutamiento", "LATAM", "Tech", "HR"],
-    gradient: "from-cyan-500 to-blue-600",
-  },
-  {
-    role: "Web3 Content Creator",
-    company: "Dev.to & Twitter",
-    period: "2023 - Presente",
-    desc: "Artículos técnicos sobre Solana, Rust, Anchor y blockchain. Alcance de miles de developers.",
-    tags: ["Content", "Solana", "Rust", "Web3"],
-    gradient: "from-fuchsia-500 to-pink-600",
-  },
-  {
-    role: "Embajador Solana Allstars",
-    company: "Solana Allstars Venezuela",
-    period: "2025 - Presente",
-    desc: "Representante oficial de Solana en Venezuela. Organización de eventos y crecimiento comunitario.",
-    tags: ["Community", "Solana", "Events", "LATAM"],
-    gradient: "from-amber-500 to-orange-600",
-  },
-]
-
 export function ExperienceSection() {
+  const { lang, tx } = useLang()
   const sectionRef = useRef<HTMLElement>(null)
+
+  const experiences = [
+    {
+      role: tx.experience.role1[lang],
+      company: tx.experience.company1[lang],
+      period: tx.experience.period1[lang],
+      desc: tx.experience.desc1[lang],
+      tags: ["Content", "Solana", "Rust", "Web3"],
+      gradient: "from-violet-500 to-purple-600",
+    },
+    {
+      role: tx.experience.role2[lang],
+      company: tx.experience.company2[lang],
+      period: tx.experience.period2[lang],
+      desc: tx.experience.desc2[lang],
+      tags: ["Community", "Solana", "Events", "LATAM"],
+      gradient: "from-cyan-500 to-blue-600",
+    },
+  ]
 
   useEffect(() => {
     const el = sectionRef.current
@@ -74,15 +60,15 @@ export function ExperienceSection() {
       <div className="mx-auto max-w-4xl">
         <div className="mb-16 text-center">
           <span className="mb-4 inline-block rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-1.5 text-xs text-cyan-300 backdrop-blur-sm">
-            Trayectoria
+            {tx.experience.badge[lang]}
           </span>
           <h2
             className="bg-gradient-to-r from-cyan-200 via-violet-200 to-fuchsia-200 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl"
           >
-            Experiencia
+            {tx.experience.title[lang]}
           </h2>
           <p className="mx-auto mt-4 max-w-md text-muted-foreground">
-            Mi camino en tecnología, blockchain y comunidad Web3
+            {tx.experience.desc[lang]}
           </p>
         </div>
 

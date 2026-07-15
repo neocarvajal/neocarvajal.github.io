@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from "react"
 import gsap from "gsap"
+import { useLang } from "@/lib/i18n"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ExternalLink, Calendar, Clock, Sparkles } from "lucide-react"
 
@@ -53,6 +54,7 @@ const posts = [
 ]
 
 export function BlogPostsSection() {
+  const { lang, tx } = useLang()
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -84,15 +86,15 @@ export function BlogPostsSection() {
         <div className="section-title-anim mb-16 text-center">
           <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-4 py-1.5 text-xs text-fuchsia-300 backdrop-blur-sm">
             <Sparkles className="size-3" />
-            Artículos técnicos
+            {tx.blog.badge[lang]}
           </span>
           <h2
             className="mb-4 bg-gradient-to-r from-fuchsia-200 via-violet-200 to-cyan-200 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl"
           >
-            Blog
+            {tx.blog.title[lang]}
           </h2>
           <p className="mx-auto max-w-md text-muted-foreground">
-            Escribo sobre Solana, blockchain y desarrollo Web3
+            {tx.blog.desc[lang]}
           </p>
         </div>
 
@@ -109,7 +111,7 @@ export function BlogPostsSection() {
                 <div className="mb-3 flex items-center gap-3 text-xs text-muted-foreground">
                   <span className="flex items-center gap-1.5">
                     <Calendar className="size-3" />
-                    {new Date(post.date).toLocaleDateString("es-ES", { year: "numeric", month: "short", day: "numeric" })}
+                    {new Date(post.date).toLocaleDateString(lang === "en" ? "en-US" : "es-ES", { year: "numeric", month: "short", day: "numeric" })}
                   </span>
                   <span className="flex items-center gap-1.5">
                     <Clock className="size-3" />
@@ -135,7 +137,7 @@ export function BlogPostsSection() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-fuchsia-300"
           >
-            Ver todos en Dev.to
+            {tx.blog.cta[lang]}
             <ExternalLink className="size-3.5" />
           </a>
         </div>

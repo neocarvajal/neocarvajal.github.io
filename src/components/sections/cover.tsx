@@ -1,10 +1,10 @@
 "use client"
 
 import { useRef, useEffect } from "react"
-import { motion } from "motion/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { MapPin, ExternalLink, Sparkles, ArrowDown } from "lucide-react"
+import { useLang } from "@/lib/i18n"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -19,6 +19,7 @@ const badges = [
 export function CoverSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const parallaxBgRef = useRef<HTMLDivElement>(null)
+  const { lang, tx } = useLang()
 
   useEffect(() => {
     const el = sectionRef.current
@@ -41,7 +42,7 @@ export function CoverSection() {
   }, [])
 
   return (
-    <section id="cover" ref={sectionRef} className="relative z-10 flex min-h-screen items-center justify-center overflow-hidden px-4 py-32">
+    <section id="cover" ref={sectionRef} className="relative z-10 flex min-h-screen items-center justify-center overflow-hidden px-4 py-20 sm:py-32">
       <div ref={parallaxBgRef} className="cover-bg-glow pointer-events-none absolute inset-0 bg-gradient-to-b from-violet-500/10 via-transparent to-transparent opacity-0" />
 
       <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/20 to-background/70 pointer-events-none" />
@@ -50,45 +51,25 @@ export function CoverSection() {
       <div className="absolute right-1/4 bottom-1/3 h-48 w-48 rounded-full bg-cyan-500/5 blur-[80px] animate-pulse" style={{ animationDelay: "1s" }} />
       <div className="absolute left-1/3 bottom-1/4 h-36 w-36 rounded-full bg-fuchsia-500/5 blur-[60px] animate-pulse" style={{ animationDelay: "2s" }} />
 
-      <div className="relative mx-auto max-w-4xl text-center" style={{ perspective: 1200, transformStyle: "preserve-3d" }}>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5, y: 40, rotateX: 15 }}
-          animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-4 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-1.5 text-xs text-violet-300 backdrop-blur-sm"
-        >
+      <div className="relative mx-auto max-w-4xl text-center animate-fade-in" style={{ perspective: 1200, transformStyle: "preserve-3d" }}>
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-1.5 text-xs text-violet-300 backdrop-blur-sm">
           <Sparkles className="size-3" />
-          Blockchain Developer & Web3 Builder
-        </motion.div>
+          {tx.cover.badge[lang]}
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30, rotateX: 10 }}
-          animate={{ opacity: 1, y: 0, rotateX: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-4 text-6xl font-bold leading-tight sm:text-7xl lg:text-8xl"
-        >
+        <h1 className="mb-4 text-5xl font-bold leading-tight sm:text-7xl lg:text-8xl">
           <span className="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">
             Erick
           </span>
           <br />
           <span className="text-foreground">Carvajal</span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mx-auto mb-8 max-w-xl text-lg text-muted-foreground/80 leading-relaxed"
-        >
-          Web3 Builder de LATAM construyendo el futuro descentralizado sobre Solana.
-        </motion.p>
+        <p className="mx-auto mb-8 max-w-xl text-base sm:text-lg text-muted-foreground/80 leading-relaxed">
+          {tx.cover.subtitle[lang]}
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mb-8 flex flex-wrap justify-center gap-3"
-        >
+        <div className="mb-8 flex flex-wrap justify-center gap-3">
           {badges.map((badge) => (
             <span
               key={badge.label}
@@ -97,24 +78,14 @@ export function CoverSection() {
               {badge.label}
             </span>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex items-center justify-center gap-2 text-sm text-muted-foreground"
-        >
+        <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
           <MapPin className="size-4" />
           <span>Cumaná, Venezuela</span>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-10 flex justify-center gap-4"
-        >
+        <div className="mt-10 flex justify-center gap-4">
           <a
             href="https://github.com/neocarvajal"
             target="_blank"
@@ -134,22 +105,15 @@ export function CoverSection() {
             LinkedIn
             <ExternalLink className="size-4" />
           </a>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="mt-16"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="text-muted-foreground/30"
+        <div className="mt-16">
+          <div
+            className="text-muted-foreground/30 animate-bounce"
           >
             <ArrowDown className="mx-auto size-5" />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   )

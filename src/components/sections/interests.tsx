@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Blocks, Globe, Code2, Users, Rocket, Sparkles } from "lucide-react"
+import { useLang } from "@/lib/i18n"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -47,6 +48,7 @@ const interests = [
 ]
 
 export function InterestsSection() {
+  const { lang, tx } = useLang()
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -78,15 +80,15 @@ export function InterestsSection() {
         <div className="section-title-anim mb-16 text-center">
           <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-1.5 text-xs text-cyan-300 backdrop-blur-sm">
             <Sparkles className="size-3" />
-            Áreas de expertise
+            {tx.interests.badge[lang]}
           </span>
           <h2
             className="mb-4 bg-gradient-to-r from-cyan-200 via-violet-200 to-fuchsia-200 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl"
           >
-            Intereses
+            {tx.interests.title[lang]}
           </h2>
           <p className="mx-auto max-w-md text-muted-foreground">
-            Donde construyo, aprendo y aporto valor
+            {tx.interests.desc[lang]}
           </p>
         </div>
 
