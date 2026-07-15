@@ -18,7 +18,6 @@ Blockchain Developer & Web3 Builder de LATAM. Especializado en Solana, Rust, Anc
 - Chat asistente por servicio (Groq/Supabase Edge Function)
 - Secciones: Cover, About, Experience, Certifications, Projects, Blog, Services, Social
 - Modo oscuro/claro
-- Página `/archive` privada con enlaces a contenido
 
 ## Desarrollo
 
