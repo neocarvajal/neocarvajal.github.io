@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { X, Send, Sparkles, AlertTriangle, User, Bot, Loader2, ArrowUpRight } from "lucide-react"
-import { supabase } from "@/lib/supabase"
+import { getSupabase } from "@/lib/supabase"
 import { useLang } from "@/lib/i18n"
 
 function sanitizeContent(text: string): string {
@@ -82,7 +82,7 @@ export function ChatModal({ service, onClose }: ChatModalProps) {
     setShowEscalation(false)
 
     try {
-      const { data, error } = await supabase.functions.invoke("chat", {
+      const { data, error } = await getSupabase().functions.invoke("chat", {
         body: {
           messages: [...messages, userMsg].slice(-20),
           serviceId: service.id,
