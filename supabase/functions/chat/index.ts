@@ -55,6 +55,7 @@ const API_TIMEOUT_MS = 25_000
 const ALLOWED_ORIGINS = [
   "https://neocarvajal.dev",
   "https://www.neocarvajal.dev",
+  "https://neocarvajal.github.io",
   "http://localhost:3000",
   "http://localhost:3001",
 ]
