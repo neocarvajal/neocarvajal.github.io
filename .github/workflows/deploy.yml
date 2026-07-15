@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [main, master]
 
 permissions:
   contents: read
@@ -24,6 +24,9 @@ jobs:
       - uses: actions/configure-pages@v4
       - run: npm ci
       - run: npx next build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: https://dntsjosaqsskukgjdlca.supabase.co
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: sb_publishable_0mVFGGA6MiBvxaSLpqltGw_N7jdR1og
       - run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
