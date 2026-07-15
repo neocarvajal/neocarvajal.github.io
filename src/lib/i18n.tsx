@@ -239,6 +239,36 @@ const t = {
     } as Text,
     footer: { es: "Asistente entrenado para responder como Erick", en: "Assistant trained to respond as Erick" } as Text,
     demo: { es: "Modo demo", en: "Demo mode" } as Text,
+    offlineDemarc: {
+      es: "\n\n---\n\n*💡 Modo offline — tu consulta ha sido registrada. Erick te responderá pronto.*",
+      en: "\n\n---\n\n*💡 Offline mode — your message has been noted. Erick will get back to you soon.*",
+    } as Text,
+    fallbackResponses: {
+      "smart-contracts": {
+        es: "¡Entendido! Como especialista en Solana, Erick desarrolla smart contracts con Anchor y Rust: tokens SPL, CPIs, PDAs y programas complejos. ¿Qué tipo de contrato necesitas?",
+        en: "Got it! As a Solana specialist, Erick develops smart contracts with Anchor and Rust: SPL tokens, CPIs, PDAs, and complex programs. What type of contract do you need?",
+      } as Text,
+      "dapps": {
+        es: "¡Genial! Erick construye DApps full-stack con Next.js, React y wallet-adapter para el frontend, y Anchor para el backend on-chain. ¿Qué tipo de aplicación tienes en mente?",
+        en: "Great! Erick builds full-stack DApps with Next.js, React, and wallet-adapter for the frontend, and Anchor for the on-chain backend. What kind of app do you have in mind?",
+      } as Text,
+      "consulting": {
+        es: "Entendido. Como consultor blockchain, Erick ayuda a equipos a diseñar arquitecturas Solana escalables y seguras, revisa programas, optimiza gas y establece mejores prácticas. ¿En qué etapa está tu proyecto?",
+        en: "Understood. As a blockchain consultant, Erick helps teams design scalable and secure Solana architectures, reviews programs, optimizes gas, and establishes best practices. What stage is your project at?",
+      } as Text,
+      "mentoring": {
+        es: "¡Perfecto! Erick ofrece mentoría 1-on-1 para developers que quieren entrar a Web3, desde fundamentos de Solana hasta patrones avanzados en Anchor. ¿Qué nivel tienes y qué te gustaría aprender?",
+        en: "Perfect! Erick offers 1-on-1 mentoring for developers wanting to get into Web3, from Solana fundamentals to advanced Anchor patterns. What level are you and what would you like to learn?",
+      } as Text,
+      "wallet-rpc": {
+        es: "Entendido. Erick tiene experiencia integrando wallets (Phantom, Backpack, Solflare) y optimizando conexiones RPC con Helius y Triton. ¿Qué integración específica necesitas?",
+        en: "Understood. Erick has experience integrating wallets (Phantom, Backpack, Solflare) and optimizing RPC connections with Helius and Triton. What specific integration do you need?",
+      } as Text,
+      "automation": {
+        es: "¡Perfecto! Erick desarrolla bots y herramientas de automatización para blockchain: monitoreo de wallets en tiempo real, análisis de transacciones, y scripts personalizados. ¿Qué proceso quieres automatizar?",
+        en: "Perfect! Erick develops bots and automation tools for blockchain: real-time wallet monitoring, transaction analysis, and custom scripts. What process do you want to automate?",
+      } as Text,
+    } as Record<string, Text>,
     fallbackGreeting: { es: "¡Hola! ¿En qué puedo ayudarte?", en: "Hi! How can I help you?" } as Text,
 
     welcomeMessages: {

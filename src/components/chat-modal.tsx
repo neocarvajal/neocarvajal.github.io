@@ -88,11 +88,12 @@ export function ChatModal({ service, onClose }: ChatModalProps) {
         setShowEscalation(true)
       }
     } catch {
+      const fallback = tx.chat.fallbackResponses[service.id]?.[lang] ?? tx.chat.error[lang]
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content: tx.chat.error[lang],
+          content: fallback + tx.chat.offlineDemarc[lang],
         },
       ])
       setShowEscalation(true)
