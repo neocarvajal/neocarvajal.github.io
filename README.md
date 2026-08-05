@@ -8,15 +8,14 @@ Blockchain Developer & Web3 Builder de LATAM. Especializado en Solana, Rust, Anc
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS v4, shadcn/ui
 - **Animations:** GSAP + ScrollTrigger, Framer Motion
-- **Infrastructure:** Helius RPC, Supabase Edge Functions
+- **Infrastructure:** Helius RPC
 - **Deployment:** GitHub Actions → GitHub Pages
 
 ## Features
 
 - Video scrub background con timeline animado
 - i18n ES/EN con toggle flotante
-- Chat asistente por servicio (Groq/Supabase Edge Function)
-- Secciones: Cover, About, Experience, Certifications, Projects, Blog, Services, Social
+- Secciones: Cover, About, Experience, Certifications, Projects, Blog, Social
 - Modo oscuro/claro
 
 ## Desarrollo

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { useLang } from "@/lib/i18n"
 
-const sectionIds = ["cover", "about", "experience", "certifications", "projects", "blog", "interests", "services", "social"] as const
+const sectionIds = ["cover", "about", "experience", "certifications", "projects", "blog", "interests", "social"] as const
 
 export function SectionNav() {
   const [active, setActive] = useState("cover")

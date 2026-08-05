@@ -19,7 +19,6 @@ const t = {
     projects: { es: "Proyectos", en: "Projects" } as Text,
     blog: { es: "Blog", en: "Blog" } as Text,
     interests: { es: "Intereses", en: "Interests" } as Text,
-    services: { es: "Servicios", en: "Services" } as Text,
     social: { es: "Redes", en: "Social" } as Text,
   },
 
@@ -161,49 +160,6 @@ const t = {
     } as Text,
   },
 
-  // ── Services ──
-  services: {
-    badge: { es: "Lo que puedo hacer por ti", en: "What I Can Do For You" } as Text,
-    title: { es: "Servicios", en: "Services" } as Text,
-    desc: {
-      es: "Soluciones blockchain y Web3 para tu proyecto. Cada servicio tiene su propio asistente IA entrenado.",
-      en: "Blockchain and Web3 solutions for your project. Each service has its own trained AI assistant.",
-    } as Text,
-    cta: { es: "Chatea con el asistente", en: "Chat with the assistant" } as Text,
-    help: { es: "¿No encuentras lo que buscas?", en: "Can't find what you're looking for?" } as Text,
-    contact: { es: "Contáctame directamente", en: "Contact me directly" } as Text,
-    service1: { es: "Smart Contracts", en: "Smart Contracts" } as Text,
-    service1desc: {
-      es: "Desarrollo y auditoría de contratos inteligentes en Solana. Desde tokens SPL hasta programas complejos con CPI y PDAs.",
-      en: "Development and audit of smart contracts on Solana. From SPL tokens to complex programs with CPI and PDAs.",
-    } as Text,
-    service2: { es: "DApps Web3", en: "Web3 DApps" } as Text,
-    service2desc: {
-      es: "Construcción de aplicaciones descentralizadas full-stack con integración de wallets, RPC y experiencia de usuario fluida.",
-      en: "Full-stack decentralized application development with wallet integration, RPC and seamless user experience.",
-    } as Text,
-    service3: { es: "Consultoría Técnica", en: "Technical Consulting" } as Text,
-    service3desc: {
-      es: "Asesoramiento en arquitectura blockchain, optimización de programas Solana, y mejores prácticas de seguridad.",
-      en: "Blockchain architecture advisory, Solana program optimization, and security best practices.",
-    } as Text,
-    service4: { es: "Mentoría & Formación", en: "Mentoring & Training" } as Text,
-    service4desc: {
-      es: "Formación personalizada en desarrollo Web3, desde fundamentos de Solana hasta patrones avanzados de Anchor.",
-      en: "Personalized Web3 development training, from Solana fundamentals to advanced Anchor patterns.",
-    } as Text,
-    service5: { es: "Wallet & RPC Integration", en: "Wallet & RPC Integration" } as Text,
-    service5desc: {
-      es: "Integración de wallets (Phantom, Backpack, etc.), optimización de conexiones RPC y gestión de endpoints.",
-      en: "Wallet integration (Phantom, Backpack, etc.), RPC connection optimization and endpoint management.",
-    } as Text,
-    service6: { es: "Bots & Automation", en: "Bots & Automation" } as Text,
-    service6desc: {
-      es: "Automatización de procesos en blockchain: monitoreo de wallets, trading bots, y herramientas de análisis en cadena.",
-      en: "Blockchain process automation: wallet monitoring, trading bots, and on-chain analysis tools.",
-    } as Text,
-  },
-
   // ── Social ──
   social: {
     badge: { es: "Conecta conmigo", en: "Connect with me" } as Text,
@@ -219,84 +175,6 @@ const t = {
       es: "¿Tienes un proyecto, idea o colaboración en mente? Estoy abierto a oportunidades en el ecosistema Web3 y blockchain.",
       en: "Have a project, idea or collaboration in mind? I'm open to opportunities in the Web3 and blockchain ecosystem.",
     } as Text,
-  },
-
-  // ── Chat Modal ──
-  chat: {
-    assistant: { es: "Asistente virtual", en: "Virtual Assistant" } as Text,
-    close: { es: "Cerrar", en: "Close" } as Text,
-    placeholder: { es: "Escribe tu mensaje...", en: "Type your message..." } as Text,
-    thinking: { es: "Pensando...", en: "Thinking..." } as Text,
-    escalation: { es: "Se requiere intervención directa", en: "Direct intervention required" } as Text,
-    escalationDesc: {
-      es: "Esta consulta necesita que Erick la responda personalmente.",
-      en: "This consultation needs Erick to respond personally.",
-    } as Text,
-    viewContact: { es: "Ver contacto", en: "View contact" } as Text,
-    error: {
-      es: "Lo siento, hubo un error de conexión. Por favor intenta de nuevo o contacta a Erick directamente.",
-      en: "Sorry, there was a connection error. Please try again or contact Erick directly.",
-    } as Text,
-    footer: { es: "Asistente entrenado para responder como Erick", en: "Assistant trained to respond as Erick" } as Text,
-    demo: { es: "Modo demo", en: "Demo mode" } as Text,
-    offlineDemarc: {
-      es: "\n\n---\n\n*💡 Modo offline — tu consulta ha sido registrada. Erick te responderá pronto.*",
-      en: "\n\n---\n\n*💡 Offline mode — your message has been noted. Erick will get back to you soon.*",
-    } as Text,
-    fallbackResponses: {
-      "smart-contracts": {
-        es: "¡Entendido! Como especialista en Solana, Erick desarrolla smart contracts con Anchor y Rust: tokens SPL, CPIs, PDAs y programas complejos. ¿Qué tipo de contrato necesitas?",
-        en: "Got it! As a Solana specialist, Erick develops smart contracts with Anchor and Rust: SPL tokens, CPIs, PDAs, and complex programs. What type of contract do you need?",
-      } as Text,
-      "dapps": {
-        es: "¡Genial! Erick construye DApps full-stack con Next.js, React y wallet-adapter para el frontend, y Anchor para el backend on-chain. ¿Qué tipo de aplicación tienes en mente?",
-        en: "Great! Erick builds full-stack DApps with Next.js, React, and wallet-adapter for the frontend, and Anchor for the on-chain backend. What kind of app do you have in mind?",
-      } as Text,
-      "consulting": {
-        es: "Entendido. Como consultor blockchain, Erick ayuda a equipos a diseñar arquitecturas Solana escalables y seguras, revisa programas, optimiza gas y establece mejores prácticas. ¿En qué etapa está tu proyecto?",
-        en: "Understood. As a blockchain consultant, Erick helps teams design scalable and secure Solana architectures, reviews programs, optimizes gas, and establishes best practices. What stage is your project at?",
-      } as Text,
-      "mentoring": {
-        es: "¡Perfecto! Erick ofrece mentoría 1-on-1 para developers que quieren entrar a Web3, desde fundamentos de Solana hasta patrones avanzados en Anchor. ¿Qué nivel tienes y qué te gustaría aprender?",
-        en: "Perfect! Erick offers 1-on-1 mentoring for developers wanting to get into Web3, from Solana fundamentals to advanced Anchor patterns. What level are you and what would you like to learn?",
-      } as Text,
-      "wallet-rpc": {
-        es: "Entendido. Erick tiene experiencia integrando wallets (Phantom, Backpack, Solflare) y optimizando conexiones RPC con Helius y Triton. ¿Qué integración específica necesitas?",
-        en: "Understood. Erick has experience integrating wallets (Phantom, Backpack, Solflare) and optimizing RPC connections with Helius and Triton. What specific integration do you need?",
-      } as Text,
-      "automation": {
-        es: "¡Perfecto! Erick desarrolla bots y herramientas de automatización para blockchain: monitoreo de wallets en tiempo real, análisis de transacciones, y scripts personalizados. ¿Qué proceso quieres automatizar?",
-        en: "Perfect! Erick develops bots and automation tools for blockchain: real-time wallet monitoring, transaction analysis, and custom scripts. What process do you want to automate?",
-      } as Text,
-    } as Record<string, Text>,
-    fallbackGreeting: { es: "¡Hola! ¿En qué puedo ayudarte?", en: "Hi! How can I help you?" } as Text,
-
-    welcomeMessages: {
-      "smart-contracts": {
-        es: "¡Hola! Soy el asistente de Erick para temas de Smart Contracts en Solana. ¿Tienes alguna idea o proyecto en mente? Cuéntame y te explico cómo Erick puede ayudarte a construirlo.",
-        en: "Hi! I'm Erick's assistant for Smart Contracts on Solana. Do you have an idea or project in mind? Tell me and I'll explain how Erick can help you build it.",
-      } as Text,
-      "dapps": {
-        es: "¡Bienvenido! Soy el asistente de DApps de Erick. ¿Qué tipo de aplicación descentralizada te gustaría construir? Ya sea un marketplace, juego, o plataforma DeFi, estaré encantado de guiarte.",
-        en: "Welcome! I'm Erick's DApps assistant. What kind of decentralized application would you like to build? Whether a marketplace, game, or DeFi platform, I'll be glad to guide you.",
-      } as Text,
-      "consulting": {
-        es: "Hola, soy el asistente de consultoría de Erick. ¿En qué etapa está tu proyecto? Cuéntame sobre tu arquitectura o desafíos técnicos y te daré una visión inicial.",
-        en: "Hi, I'm Erick's consulting assistant. What stage is your project at? Tell me about your architecture or technical challenges and I'll give you an initial overview.",
-      } as Text,
-      "mentoring": {
-        es: "¡Hey! Soy el asistente de mentoría. ¿Quieres aprender desarrollo Web3? Cuéntame tu nivel actual y qué te gustaría dominar. Desde fundamentos hasta avanzado.",
-        en: "Hey! I'm the mentoring assistant. Want to learn Web3 development? Tell me your current level and what you'd like to master. From fundamentals to advanced.",
-      } as Text,
-      "wallet-rpc": {
-        es: "Hola, soy el asistente de integración Wallet & RPC. ¿Tienes algún problema de conexión o necesitas implementar una wallet en tu DApp? Estoy aquí para ayudarte.",
-        en: "Hi, I'm the Wallet & RPC integration assistant. Having connection issues or need to implement a wallet in your DApp? I'm here to help.",
-      } as Text,
-      "automation": {
-        es: "¡Hola! Soy el asistente de automatización de Erick. ¿Qué proceso necesitas automatizar en blockchain? Cuéntame tu caso y vemos cómo hacerlo realidad.",
-        en: "Hi! I'm Erick's automation assistant. What process do you need to automate on blockchain? Tell me about your case and we'll make it happen.",
-      } as Text,
-    } as Record<string, Text>,
   },
 
   // ── Interests section ──

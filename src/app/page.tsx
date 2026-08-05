@@ -7,7 +7,6 @@ import { CertificationsSection } from "@/components/sections/certifications"
 import { ProjectsSection } from "@/components/sections/projects"
 import { BlogPostsSection } from "@/components/sections/blog-posts"
 import { InterestsSection } from "@/components/sections/interests"
-import { ServicesSection } from "@/components/sections/services"
 import { SocialSection } from "@/components/sections/social"
 import { LanguageToggle } from "@/components/language-toggle"
 
@@ -23,7 +22,6 @@ export default function Home() {
         <CertificationsSection />
         <ProjectsSection />
         <BlogPostsSection />
-        <ServicesSection />
         <InterestsSection />
         <SocialSection />
         <LanguageToggle />

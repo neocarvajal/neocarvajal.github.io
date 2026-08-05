@@ -60,8 +60,5 @@ PROYECTO.md
 # Backup files
 *.back
 
-# Supabase temp files
-supabase/.temp/
-
 # Bun lockfile
 bun.lock
